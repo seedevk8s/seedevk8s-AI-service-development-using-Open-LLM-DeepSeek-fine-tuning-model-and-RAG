@@ -1,0 +1,35 @@
+sequenceDiagram
+    participant Data as 📊 데이터
+    participant GPT1 as 🤖 GPT-4o-mini<br/>(질문 생성)
+    participant Filter as 🔍 필터링
+    participant GPT2 as 🤖 GPT-4o-mini<br/>(답변 생성)
+    participant Result as 🎯 최종결과
+
+    Note over Data, GPT1: 첫 번째 GPT 호출 - 복합 질문 생성
+    Data->>GPT1: 📤 5개 문서 제공<br/>doc1: 원본 context<br/>doc2~5: negative samples
+    
+    Note over GPT1: System Prompt:<br/>"2개 이상 문서를 참조하는<br/>복합 질문을 만드세요"
+    
+    GPT1->>GPT1: 🧠 문서들 분석<br/>연관성 찾기
+    GPT1->>Data: 📥 복합 질문 + 근거 반환<br/>Question: ...<br/>Reason: ...<br/>Answer: True/False
+    
+    Data->>Filter: 📋 품질 검사 요청
+    Filter->>Filter: ❌ Answer: False 행 제거<br/>✅ Answer: True만 유지
+    
+    Note over Filter, GPT2: 두 번째 GPT 호출 - 답변 생성
+    Filter->>GPT2: 📤 복합 질문 + 5개 문서
+    
+    Note over GPT2: System Prompt:<br/>"문서 내 정보만 사용하여<br/>인용 출처를 명시해서 답변하세요"
+    
+    GPT2->>GPT2: 🔍 문서들 검색<br/>정보 종합
+    GPT2->>Result: 📥 인용 답변 반환<br/>답변 + [[doc1]], [[doc2]]
+    
+    Note over Result: 최종 결과물:<br/>복합 질문 + 출처 명시 답변<br/>Multi-document QA 데이터셋
+    
+    rect rgb(255, 248, 225)
+        Note over Data, GPT1: 🎯 목적: 여러 문서 참조 필요한 질문 생성
+    end
+    
+    rect rgb(232, 245, 232)
+        Note over Filter, GPT2: 🎯 목적: 정확한 답변 + 출처 인용
+    end
