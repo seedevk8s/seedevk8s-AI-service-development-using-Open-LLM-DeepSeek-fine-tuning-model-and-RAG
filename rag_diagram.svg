@@ -1,0 +1,390 @@
+<svg viewBox="0 0 1600 1400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #2c3e50; }
+      .step-title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #34495e; }
+      .step-text { font-family: Arial, sans-serif; font-size: 14px; fill: #34495e; }
+      .box { fill: #ecf0f1; stroke: #3498db; stroke-width: 2; rx: 8; }
+      .query-box { fill: #e8f5e8; stroke: #27ae60; stroke-width: 2; rx: 8; }
+      .retrieval-box { fill: #fff3cd; stroke: #f39c12; stroke-width: 2; rx: 8; }
+      .generation-box { fill: #e7f3ff; stroke: #3498db; stroke-width: 2; rx: 8; }
+      .result-box { fill: #f8d7da; stroke: #e74c3c; stroke-width: 2; rx: 8; }
+      .arrow { stroke: #7f8c8d; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .db-cylinder { fill: #f39c12; stroke: #e67e22; stroke-width: 2; }
+      .llm-box { fill: #fff2cc; stroke: #d6b656; stroke-width: 2; }
+      .slm-box { fill: #f8cecc; stroke: #b85450; stroke-width: 2; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d" />
+    </marker>
+    <marker id="feedback-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#009688" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="800" y="30" text-anchor="middle" class="title">RAG (Retrieval-Augmented Generation)</text>
+  
+  <!-- Step 1: User Query -->
+  <rect x="50" y="80" width="150" height="60" class="query-box"/>
+  <text x="125" y="100" text-anchor="middle" class="step-title">1. 사용자 질문</text>
+  <text x="125" y="120" text-anchor="middle" class="step-text">"기후변화의 원인은?"</text>
+  
+  <!-- Arrow 1 -->
+  <line x1="200" y1="110" x2="250" y2="110" class="arrow"/>
+  
+  <!-- Step 2: Retrieval Process -->
+  <rect x="270" y="60" width="200" height="100" class="retrieval-box"/>
+  <text x="370" y="80" text-anchor="middle" class="step-title">2. 검색 (Retrieval)</text>
+  <text x="370" y="100" text-anchor="middle" class="step-text">질문을 벡터로 변환</text>
+  <text x="370" y="115" text-anchor="middle" class="step-text">유사한 문서 검색</text>
+  <text x="370" y="130" text-anchor="middle" class="step-text">관련 정보 추출</text>
+  <text x="370" y="145" text-anchor="middle" class="step-text">상위 K개 문서 선택</text>
+  
+  <!-- Knowledge Base -->
+  <g transform="translate(520, 80)">
+    <ellipse cx="50" cy="60" rx="40" ry="8" class="db-cylinder"/>
+    <rect x="10" y="20" width="80" height="40" class="db-cylinder"/>
+    <ellipse cx="50" cy="20" rx="40" ry="8" class="db-cylinder"/>
+    <text x="50" y="85" text-anchor="middle" class="step-text">지식 베이스</text>
+    <text x="50" y="100" text-anchor="middle" class="step-text">(벡터 DB)</text>
+  </g>
+  
+  <!-- Arrow 2 -->
+  <line x1="470" y1="110" x2="520" y2="110" class="arrow"/>
+  
+  <!-- Arrow 3 -->
+  <line x1="370" y1="160" x2="370" y2="210" class="arrow"/>
+  
+  <!-- Retrieved Documents -->
+  <rect x="270" y="230" width="200" height="80" class="box"/>
+  <text x="370" y="250" text-anchor="middle" class="step-title">검색된 문서들</text>
+  <text x="370" y="270" text-anchor="middle" class="step-text">• 온실가스 배출 관련 논문</text>
+  <text x="370" y="285" text-anchor="middle" class="step-text">• 산업화와 기후변화 보고서</text>
+  <text x="370" y="300" text-anchor="middle" class="step-text">• IPCC 기후변화 자료</text>
+  
+  <!-- Arrow 4 -->
+  <line x1="370" y1="310" x2="370" y2="340" class="arrow"/>
+  
+  <!-- Step 3: Document Processing -->
+  <rect x="250" y="350" width="240" height="100" style="fill: #e8f4fd; stroke: #17a2b8; stroke-width: 2; rx: 8;"/>
+  <text x="370" y="370" text-anchor="middle" class="step-title">3. 참조문서 정리</text>
+  <text x="370" y="390" text-anchor="middle" class="step-text">• 관련성 순으로 정렬</text>
+  <text x="370" y="405" text-anchor="middle" class="step-text">• 중복 내용 제거</text>
+  <text x="370" y="420" text-anchor="middle" class="step-text">• 핵심 정보 추출</text>
+  <text x="370" y="435" text-anchor="middle" class="step-text">• 출처 정보 정리</text>
+  
+  <!-- Arrow 5 -->
+  <line x1="370" y1="450" x2="370" y2="480" class="arrow"/>
+  
+  <!-- Step 4: Generation with Model Choice -->
+  <rect x="250" y="490" width="240" height="120" class="generation-box"/>
+  <text x="370" y="510" text-anchor="middle" class="step-title">4. 생성 (Generation)</text>
+  <text x="370" y="530" text-anchor="middle" class="step-text">정리된 정보와 원래 질문을</text>
+  <text x="370" y="545" text-anchor="middle" class="step-text">선택된 언어 모델에 입력</text>
+  
+  <!-- Model choice boxes -->
+  <rect x="270" y="560" width="80" height="40" class="llm-box" rx="5"/>
+  <text x="310" y="575" text-anchor="middle" class="step-text">LLM</text>
+  <text x="310" y="590" text-anchor="middle" class="step-text">(GPT-4, etc)</text>
+  
+  <text x="370" y="580" text-anchor="middle" class="step-text">또는</text>
+  
+  <rect x="410" y="560" width="80" height="40" class="slm-box" rx="5"/>
+  <text x="450" y="575" text-anchor="middle" class="step-text">SLM</text>
+  <text x="450" y="590" text-anchor="middle" class="step-text">(Llama2-7B, etc)</text>
+  
+  <!-- Arrow 6 -->
+  <line x1="370" y1="610" x2="370" y2="640" class="arrow"/>
+  
+  <!-- Step 5: Final Answer -->
+  <rect x="180" y="650" width="380" height="70" class="result-box"/>
+  <text x="370" y="670" text-anchor="middle" class="step-title">5. 최종 답변 (참조 출처 포함)</text>
+  <text x="370" y="690" text-anchor="middle" class="step-text">"기후변화의 주요 원인은 온실가스 배출로, 산업화 이후..."</text>
+  <text x="370" y="705" text-anchor="middle" class="step-text">출처: [IPCC 보고서 2023], [Nature Climate 논문], [환경부 자료]</text>
+  
+  <!-- RAG Optimization Section - RIGHT SIDE -->
+  <rect x="1200" y="80" width="180" height="650" style="fill: #f0f8ff; stroke: #4682b4; stroke-width: 3; rx: 10; stroke-dasharray: 5,5;"/>
+  <text x="1290" y="105" text-anchor="middle" style="font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #2c3e50;">RAG 최적화</text>
+  
+  <!-- Embedding Fine-tuning -->
+  <rect x="1210" y="120" width="160" height="70" style="fill: #fff9e6; stroke: #ff9800; stroke-width: 2; rx: 5;"/>
+  <text x="1290" y="135" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #e65100;">임베딩 파인튜닝</text>
+  <text x="1290" y="150" text-anchor="middle" class="step-text">• 도메인 특화 임베딩</text>
+  <text x="1290" y="165" text-anchor="middle" class="step-text">• 의미적 유사성 향상</text>
+  <text x="1290" y="180" text-anchor="middle" class="step-text">• 대조 학습 적용</text>
+  
+  <!-- Retrieval Optimization -->
+  <rect x="1210" y="200" width="160" height="70" style="fill: #e8f5e8; stroke: #4caf50; stroke-width: 2; rx: 5;"/>
+  <text x="1290" y="215" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #2e7d32;">검색 최적화</text>
+  <text x="1290" y="230" text-anchor="middle" class="step-text">• 청킹 전략 개선</text>
+  <text x="1290" y="245" text-anchor="middle" class="step-text">• 하이브리드 검색</text>
+  <text x="1290" y="260" text-anchor="middle" class="step-text">• 재순위 알고리즘</text>
+  
+  <!-- Generation Fine-tuning -->
+  <rect x="1210" y="280" width="160" height="70" style="fill: #f3e5f5; stroke: #9c27b0; stroke-width: 2; rx: 5;"/>
+  <text x="1290" y="295" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #7b1fa2;">생성 모델 튜닝</text>
+  <text x="1290" y="310" text-anchor="middle" class="step-text">• 도메인 특화 튜닝</text>
+  <text x="1290" y="325" text-anchor="middle" class="step-text">• RLHF 적용</text>
+  <text x="1290" y="340" text-anchor="middle" class="step-text">• 프롬프트 엔지니어링</text>
+  
+  <!-- End-to-End Optimization -->
+  <rect x="1210" y="360" width="160" height="70" style="fill: #fce4ec; stroke: #e91e63; stroke-width: 2; rx: 5;"/>
+  <text x="1290" y="375" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #c2185b;">전체 파이프라인</text>
+  <text x="1290" y="390" text-anchor="middle" class="step-text">• 종단간 학습</text>
+  <text x="1290" y="405" text-anchor="middle" class="step-text">• 멀티태스크 최적화</text>
+  <text x="1290" y="420" text-anchor="middle" class="step-text">• 지연시간 최적화</text>
+  
+  <!-- Evaluation & Feedback -->
+  <rect x="1210" y="440" width="160" height="70" style="fill: #e0f2f1; stroke: #009688; stroke-width: 2; rx: 5;"/>
+  <text x="1290" y="455" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #00695c;">평가 & 피드백</text>
+  <text x="1290" y="470" text-anchor="middle" class="step-text">• 자동 평가 지표</text>
+  <text x="1290" y="485" text-anchor="middle" class="step-text">• 사용자 피드백 수집</text>
+  <text x="1290" y="500" text-anchor="middle" class="step-text">• A/B 테스트</text>
+  
+  <!-- Q&A Dataset Generation -->
+  <rect x="1210" y="520" width="160" height="120" style="fill: #f3e5f5; stroke: #673ab7; stroke-width: 2; rx: 5;"/>
+  <text x="1290" y="535" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #512da8;">Q&A 데이터셋 생성</text>
+  <text x="1290" y="550" text-anchor="middle" class="step-text">• 합성 Q&A 생성</text>
+  <text x="1290" y="565" text-anchor="middle" class="step-text">• 도메인 특화 데이터</text>
+  <text x="1290" y="580" text-anchor="middle" class="step-text">• 골드 스탠다드 구축</text>
+  <text x="1290" y="595" text-anchor="middle" class="step-text">• 정답/오답 문서 쌍</text>
+  <text x="1290" y="610" text-anchor="middle" class="step-text">• 하드 네거티브 마이닝</text>
+  <text x="1290" y="625" text-anchor="middle" class="step-text">• 데이터 증강</text>
+  
+  <!-- Hyperparameter Tuning -->
+  <rect x="1210" y="650" width="160" height="70" style="fill: #fff3e0; stroke: #ff5722; stroke-width: 2; rx: 5;"/>
+  <text x="1290" y="665" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #d84315;">하이퍼파라미터</text>
+  <text x="1290" y="680" text-anchor="middle" class="step-text">• Top-K 검색 수</text>
+  <text x="1290" y="695" text-anchor="middle" class="step-text">• 청크 크기 조정</text>
+  <text x="1290" y="710" text-anchor="middle" class="step-text">• 유사도 임계값</text>
+  
+  <!-- Hardware Infrastructure Section - BOTTOM LEFT -->
+  <rect x="50" y="800" width="320" height="400" style="fill: #f0f0f0; stroke: #2196f3; stroke-width: 3; rx: 10; stroke-dasharray: 5,5;"/>
+  <text x="210" y="825" text-anchor="middle" style="font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #1976d2;">하드웨어 인프라</text>
+  
+  <!-- GPU Section -->
+  <rect x="70" y="840" width="140" height="90" style="fill: #e8f5e8; stroke: #4caf50; stroke-width: 2; rx: 5;"/>
+  <text x="140" y="855" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #2e7d32;">GPU 가속</text>
+  <text x="140" y="870" text-anchor="middle" style="font-size: 10px; fill: #388e3c;">• NVIDIA A100 (40GB)</text>
+  <text x="140" y="885" text-anchor="middle" style="font-size: 10px; fill: #388e3c;">• NVIDIA H100 (80GB)</text>
+  <text x="140" y="900" text-anchor="middle" style="font-size: 10px; fill: #388e3c;">• NVIDIA V100 (32GB)</text>
+  <text x="140" y="915" text-anchor="middle" style="font-size: 10px; fill: #388e3c;">• 멀티 GPU 클러스터</text>
+  
+  <!-- CPU & Memory Section -->
+  <rect x="220" y="840" width="140" height="90" style="fill: #fff3e0; stroke: #ff9800; stroke-width: 2; rx: 5;"/>
+  <text x="290" y="855" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #e65100;">CPU & 메모리</text>
+  <text x="290" y="870" text-anchor="middle" style="font-size: 10px; fill: #f57c00;">• Intel Xeon / AMD EPYC</text>
+  <text x="290" y="885" text-anchor="middle" style="font-size: 10px; fill: #f57c00;">• 128GB+ RAM</text>
+  <text x="290" y="900" text-anchor="middle" style="font-size: 10px; fill: #f57c00;">• 고속 DDR5 메모리</text>
+  <text x="290" y="915" text-anchor="middle" style="font-size: 10px; fill: #f57c00;">• NUMA 최적화</text>
+  
+  <!-- Storage Section -->
+  <rect x="70" y="940" width="140" height="90" style="fill: #f3e5f5; stroke: #9c27b0; stroke-width: 2; rx: 5;"/>
+  <text x="140" y="955" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #7b1fa2;">스토리지</text>
+  <text x="140" y="970" text-anchor="middle" style="font-size: 10px; fill: #8e24aa;">• NVMe SSD (PCIe 4.0)</text>
+  <text x="140" y="985" text-anchor="middle" style="font-size: 10px; fill: #8e24aa;">• 벡터 DB 최적화</text>
+  <text x="140" y="1000" text-anchor="middle" style="font-size: 10px; fill: #8e24aa;">• 분산 파일 시스템</text>
+  <text x="140" y="1015" text-anchor="middle" style="font-size: 10px; fill: #8e24aa;">• Redis/ElasticSearch</text>
+  
+  <!-- Cloud Infrastructure -->
+  <rect x="220" y="940" width="140" height="90" style="fill: #e0f2f1; stroke: #009688; stroke-width: 2; rx: 5;"/>
+  <text x="290" y="955" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #00695c;">클라우드 인프라</text>
+  <text x="290" y="970" text-anchor="middle" style="font-size: 10px; fill: #00796b;">• AWS p4d.24xlarge</text>
+  <text x="290" y="985" text-anchor="middle" style="font-size: 10px; fill: #00796b;">• GCP A2 인스턴스</text>
+  <text x="290" y="1000" text-anchor="middle" style="font-size: 10px; fill: #00796b;">• Azure ND A100 v4</text>
+  <text x="290" y="1015" text-anchor="middle" style="font-size: 10px; fill: #00796b;">• 쿠버네티스 오케스트레이션</text>
+  
+  <!-- Performance Optimization -->
+  <rect x="70" y="1040" width="290" height="100" style="fill: #fce4ec; stroke: #e91e63; stroke-width: 2; rx: 5;"/>
+  <text x="215" y="1055" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #c2185b;">성능 최적화 기법</text>
+  <text x="140" y="1070" text-anchor="middle" style="font-size: 10px; fill: #ad1457;">• 모델 병렬화</text>
+  <text x="290" y="1070" text-anchor="middle" style="font-size: 10px; fill: #ad1457;">• 데이터 병렬화</text>
+  <text x="140" y="1085" text-anchor="middle" style="font-size: 10px; fill: #ad1457;">• 혼합 정밀도 (FP16/BF16)</text>
+  <text x="290" y="1085" text-anchor="middle" style="font-size: 10px; fill: #ad1457;">• 그래디언트 체크포인팅</text>
+  <text x="140" y="1100" text-anchor="middle" style="font-size: 10px; fill: #ad1457;">• TensorRT 최적화</text>
+  <text x="290" y="1100" text-anchor="middle" style="font-size: 10px; fill: #ad1457;">• CUDA 커널 튜닝</text>
+  <text x="140" y="1115" text-anchor="middle" style="font-size: 10px; fill: #ad1457;">• 메모리 최적화</text>
+  <text x="290" y="1115" text-anchor="middle" style="font-size: 10px; fill: #ad1457;">• 배치 처리 최적화</text>
+  <text x="215" y="1130" text-anchor="middle" style="font-size: 10px; fill: #ad1457;">• 동적 배치 크기 조정</text>
+  
+  <!-- Hardware Performance Metrics - TOP CENTER -->
+  <rect x="650" y="80" width="400" height="160" style="fill: #e3f2fd; stroke: #2196f3; stroke-width: 2; rx: 8;"/>
+  <text x="850" y="100" text-anchor="middle" style="font-weight: bold; font-size: 14px; fill: #1565c0;">하드웨어별 성능 지표</text>
+  
+  <!-- A100 Performance -->
+  <rect x="670" y="110" width="180" height="60" style="fill: #e8f5e8; stroke: #4caf50; stroke-width: 2; rx: 5;"/>
+  <text x="760" y="125" text-anchor="middle" style="font-size: 11px; font-weight: bold; fill: #2e7d32;">NVIDIA A100</text>
+  <text x="760" y="140" text-anchor="middle" style="font-size: 10px; fill: #388e3c;">처리량: 312 TFLOPS (FP16)</text>
+  <text x="760" y="155" text-anchor="middle" style="font-size: 10px; fill: #388e3c;">메모리: 40GB/80GB HBM2e</text>
+  
+  <!-- H100 Performance -->
+  <rect x="860" y="110" width="180" height="60" style="fill: #fff3e0; stroke: #ff9800; stroke-width: 2; rx: 5;"/>
+  <text x="950" y="125" text-anchor="middle" style="font-size: 11px; font-weight: bold; fill: #e65100;">NVIDIA H100</text>
+  <text x="950" y="140" text-anchor="middle" style="font-size: 10px; fill: #f57c00;">처리량: 989 TFLOPS (FP16)</text>
+  <text x="950" y="155" text-anchor="middle" style="font-size: 10px; fill: #f57c00;">메모리: 80GB HBM3</text>
+  
+  <!-- Latency Comparison -->
+  <rect x="670" y="180" width="370" height="50" style="fill: #f3e5f5; stroke: #9c27b0; stroke-width: 2; rx: 5;"/>
+  <text x="855" y="195" text-anchor="middle" style="font-size: 11px; font-weight: bold; fill: #7b1fa2;">지연시간 & 비용 비교</text>
+  <text x="760" y="210" text-anchor="middle" style="font-size: 10px; fill: #8e24aa;">A100: ~50ms/토큰, $2.5/시간</text>
+  <text x="950" y="210" text-anchor="middle" style="font-size: 10px; fill: #8e24aa;">H100: ~25ms/토큰, $4.0/시간</text>
+  <text x="855" y="225" text-anchor="middle" style="font-size: 9px; fill: #8e24aa;">H100이 2배 빠르지만 비용도 1.6배 높음</text>
+  
+  <!-- LLM vs SLM Comparison - CENTER BOTTOM -->
+  <rect x="650" y="260" width="400" height="200" style="fill: #f8f9fa; stroke: #6c757d; stroke-width: 2; rx: 8;"/>
+  <text x="850" y="280" text-anchor="middle" class="step-title">LLM vs SLM 비교</text>
+  
+  <!-- LLM Section -->
+  <rect x="670" y="290" width="180" height="90" class="llm-box" rx="5"/>
+  <text x="760" y="305" text-anchor="middle" style="font-weight: bold; font-size: 14px; fill: #d6b656;">LLM (Large)</text>
+  <text x="760" y="320" text-anchor="middle" class="step-text">• 높은 정확도</text>
+  <text x="760" y="335" text-anchor="middle" class="step-text">• 복잡한 추론</text>
+  <text x="760" y="350" text-anchor="middle" class="step-text">• 높은 비용</text>
+  <text x="760" y="365" text-anchor="middle" class="step-text">• 느린 응답</text>
+  
+  <!-- SLM Section -->
+  <rect x="860" y="290" width="180" height="90" class="slm-box" rx="5"/>
+  <text x="950" y="305" text-anchor="middle" style="font-weight: bold; font-size: 14px; fill: #b85450;">SLM (Small)</text>
+  <text x="950" y="320" text-anchor="middle" class="step-text">• 빠른 응답</text>
+  <text x="950" y="335" text-anchor="middle" class="step-text">• 저비용</text>
+  <text x="950" y="350" text-anchor="middle" class="step-text">• 온디바이스</text>
+  <text x="950" y="365" text-anchor="middle" class="step-text">• 제한적 성능</text>
+  
+  <!-- Use Cases -->
+  <text x="850" y="395" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #495057;">선택 기준</text>
+  <text x="850" y="410" text-anchor="middle" class="step-text">LLM: 복잡한 분석, 높은 정확도 요구</text>
+  <text x="850" y="425" text-anchor="middle" class="step-text">SLM: 실시간 처리, 비용 효율성 중요</text>
+  <text x="850" y="440" text-anchor="middle" class="step-text">하이브리드: 단계별 다른 모델 활용</text>
+  <text x="850" y="455" text-anchor="middle" style="font-weight: bold; font-size: 10px; fill: #1565c0;">권장 하드웨어: LLM→H100/A100, SLM→V100/RTX</text>
+  
+  <!-- Q&A Examples and Optimization Info - CENTER RIGHT -->
+  <rect x="650" y="480" width="400" height="280" style="fill: #f9f9f9; stroke: #8e24aa; stroke-width: 2; rx: 8;"/>
+  <text x="850" y="500" text-anchor="middle" style="font-weight: bold; font-size: 14px; fill: #6a1b9a;">정답/오답 문서 & 최적화</text>
+  
+  <!-- Question Example -->
+  <rect x="670" y="510" width="360" height="20" style="fill: #e1f5fe; stroke: #0288d1; stroke-width: 1; rx: 3;"/>
+  <text x="850" y="523" text-anchor="middle" style="font-size: 11px; font-weight: bold; fill: #01579b;">질문: "파이썬에서 리스트를 정렬하는 방법은?"</text>
+  
+  <!-- Positive Document -->
+  <rect x="670" y="540" width="170" height="50" style="fill: #e8f5e8; stroke: #4caf50; stroke-width: 2; rx: 5;"/>
+  <text x="755" y="555" text-anchor="middle" style="font-size: 11px; font-weight: bold; fill: #2e7d32;">✓ 정답문서 (Positive)</text>
+  <text x="755" y="568" text-anchor="middle" style="font-size: 10px; fill: #388e3c;">"list.sort() 메서드 사용"</text>
+  <text x="755" y="580" text-anchor="middle" style="font-size: 10px; fill: #388e3c;">"sorted() 함수로 새 리스트 생성"</text>
+  
+  <!-- Negative Document -->
+  <rect x="850" y="540" width="170" height="50" style="fill: #ffebee; stroke: #f44336; stroke-width: 2; rx: 5;"/>
+  <text x="935" y="555" text-anchor="middle" style="font-size: 11px; font-weight: bold; fill: #c62828;">✗ 오답문서 (Negative)</text>
+  <text x="935" y="568" text-anchor="middle" style="font-size: 10px; fill: #d32f2f;">"자바스크립트 배열 정렬법"</text>
+  <text x="935" y="580" text-anchor="middle" style="font-size: 10px; fill: #d32f2f;">"C++ vector 정렬 방법"</text>
+  
+  <!-- Hard Negative Mining -->
+  <rect x="670" y="600" width="360" height="60" style="fill: #fce4ec; stroke: #e91e63; stroke-width: 2; rx: 5;"/>
+  <text x="850" y="615" text-anchor="middle" style="font-weight: bold; font-size: 11px; fill: #ad1457;">하드 네거티브 마이닝 & 대조 학습</text>
+  <text x="850" y="630" text-anchor="middle" style="font-size: 10px; fill: #c2185b;">질문과 유사해 보이지만 실제로는 답이 되지 않는 어려운 오답 문서 수집</text>
+  <text x="850" y="645" text-anchor="middle" style="font-size: 10px; fill: #c2185b;">대조 학습: 정답 문서는 가깝게, 오답 문서는 멀리 → 검색 정확도 향상</text>
+  <text x="850" y="660" text-anchor="middle" style="font-size: 9px; fill: #ad1457;">예) "파이썬 리스트" 질문에 "파이썬 딕셔너리 정렬" 같은 유사하지만 부정확한 문서</text>
+  
+  <!-- Optimization Legend -->
+  <rect x="670" y="670" width="360" height="80" style="fill: #f5f5f5; stroke: #666; stroke-width: 1; rx: 5;"/>
+  <text x="850" y="685" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #333;">최적화 연결 순서</text>
+  
+  <!-- Legend items in two rows -->
+  <circle cx="690" cy="700" r="8" style="fill: #ff9800;"/>
+  <text x="705" y="705" style="font-size: 11px; fill: #34495e;">① 임베딩 파인튜닝</text>
+  
+  <circle cx="690" cy="720" r="8" style="fill: #4caf50;"/>
+  <text x="705" y="725" style="font-size: 11px; fill: #34495e;">② 검색 최적화</text>
+  
+  <circle cx="690" cy="740" r="8" style="fill: #9c27b0;"/>
+  <text x="705" y="745" style="font-size: 11px; fill: #34495e;">③ 생성 모델 튜닝</text>
+  
+  <circle cx="850" cy="700" r="8" style="fill: #673ab7;"/>
+  <text x="865" y="705" style="font-size: 11px; fill: #34495e;">④ Q&A 데이터셋 생성</text>
+  
+  <circle cx="850" cy="720" r="10" style="fill: #009688;"/>
+  <text x="870" y="725" style="font-size: 11px; fill: #34495e;">⑤ 피드백 루프</text>
+  
+  <circle cx="850" cy="740" r="12" style="fill: #2196f3;"/>
+  <text x="875" y="745" style="font-size: 11px; fill: #34495e;">HW 하드웨어 인프라</text>
+  
+  <!-- RAG Benefits Box - BOTTOM CENTER -->
+  <rect x="400" y="800" width="500" height="140" style="fill: #e8f5e8; stroke: #27ae60; stroke-width: 2; rx: 8;"/>
+  <text x="650" y="820" text-anchor="middle" class="step-title">RAG + 하드웨어 최적화 장점</text>
+  <text x="650" y="840" text-anchor="middle" class="step-text">✓ 할루시네이션 감소 ✓ 최신 정보 활용 ✓ 신뢰성 향상</text>
+  <text x="650" y="855" text-anchor="middle" class="step-text">✓ 근거 기반 답변 ✓ 참조 출처 제공 ✓ 모델 선택 유연성</text>
+  <text x="650" y="870" text-anchor="middle" class="step-text">✓ 지속적 성능 개선 ✓ 도메인 특화 최적화 ✓ 체계적 평가</text>
+  <text x="650" y="885" text-anchor="middle" class="step-text">✓ 정답/오답 구분 학습 ✓ 대조 학습 적용 ✓ 검색 정확도 향상</text>
+  <text x="650" y="900" text-anchor="middle" style="font-weight: bold; fill: #2e7d32;">✓ GPU 가속 처리 ✓ 고성능 인프라 ✓ 확장성 보장</text>
+  <text x="650" y="915" text-anchor="middle" style="font-weight: bold; fill: #2e7d32;">✓ 실시간 벡터 검색 ✓ 병렬 처리 최적화 ✓ 메모리 효율성</text>
+  <text x="650" y="930" text-anchor="middle" style="font-size: 11px; fill: #666;">전체 시스템이 소프트웨어와 하드웨어 최적화를 통해 최고 성능 달성</text>
+  
+  <!-- Optimization arrows with numbered circles -->
+  <!-- Arrow 1: Embedding optimization -->
+  <line x1="470" y1="110" x2="1200" y2="155" style="stroke: #ff9800; stroke-width: 2; stroke-dasharray: 3,3;"/>
+  <circle cx="835" cy="133" r="12" style="fill: #ff9800; stroke: white; stroke-width: 2;"/>
+  <text x="835" y="138" text-anchor="middle" style="font-size: 12px; font-weight: bold; fill: white;">①</text>
+  
+  <!-- Arrow 2: Retrieval optimization -->
+  <line x1="470" y1="270" x2="1200" y2="235" style="stroke: #4caf50; stroke-width: 2; stroke-dasharray: 3,3;"/>
+  <circle cx="835" cy="253" r="12" style="fill: #4caf50; stroke: white; stroke-width: 2;"/>
+  <text x="835" y="258" text-anchor="middle" style="font-size: 12px; font-weight: bold; fill: white;">②</text>
+  
+  <!-- Arrow 3: Generation optimization -->
+  <line x1="490" y1="550" x2="1200" y2="315" style="stroke: #9c27b0; stroke-width: 2; stroke-dasharray: 3,3;"/>
+  <circle cx="845" cy="433" r="12" style="fill: #9c27b0; stroke: white; stroke-width: 2;"/>
+  <text x="845" y="438" text-anchor="middle" style="font-size: 12px; font-weight: bold; fill: white;">③</text>
+  
+  <!-- Arrow 4: Q&A Dataset optimization -->
+  <line x1="560" y1="690" x2="1200" y2="580" style="stroke: #673ab7; stroke-width: 2; stroke-dasharray: 3,3;"/>
+  <circle cx="880" cy="635" r="12" style="fill: #673ab7; stroke: white; stroke-width: 2;"/>
+  <text x="880" y="640" text-anchor="middle" style="font-size: 12px; font-weight: bold; fill: white;">④</text>
+  
+  <!-- Arrow 5: Hardware Infrastructure -->
+  <line x1="370" y1="880" x2="1200" y2="400" style="stroke: #2196f3; stroke-width: 3; stroke-dasharray: 3,3;"/>
+  <circle cx="785" cy="640" r="15" style="fill: #2196f3; stroke: white; stroke-width: 2;"/>
+  <text x="785" y="646" text-anchor="middle" style="font-size: 14px; font-weight: bold; fill: white;">HW</text>
+  
+  <!-- Hardware connection arrows -->
+  <!-- GPU to Vector DB -->
+  <line x1="210" y1="840" x2="520" y2="120" style="stroke: #4caf50; stroke-width: 3; stroke-dasharray: 4,4;"/>
+  <circle cx="365" cy="480" r="12" style="fill: #4caf50; stroke: white; stroke-width: 2;"/>
+  <text x="365" y="485" text-anchor="middle" style="font-size: 10px; font-weight: bold; fill: white;">GPU</text>
+  
+  <!-- Storage to Knowledge Base -->
+  <line x1="140" y1="940" x2="570" y2="120" style="stroke: #9c27b0; stroke-width: 3; stroke-dasharray: 4,4;"/>
+  <circle cx="355" cy="530" r="12" style="fill: #9c27b0; stroke: white; stroke-width: 2;"/>
+  <text x="355" y="535" text-anchor="middle" style="font-size: 10px; font-weight: bold; fill: white;">SSD</text>
+  
+  <!-- CPU to Processing -->
+  <line x1="290" y1="885" x2="370" y2="270" style="stroke: #ff9800; stroke-width: 3; stroke-dasharray: 4,4;"/>
+  <circle cx="330" cy="578" r="12" style="fill: #ff9800; stroke: white; stroke-width: 2;"/>
+  <text x="330" y="583" text-anchor="middle" style="font-size: 10px; font-weight: bold; fill: white;">CPU</text>
+  
+  <!-- Cloud to Generation -->
+  <line x1="290" y1="985" x2="370" y2="550" style="stroke: #009688; stroke-width: 3; stroke-dasharray: 4,4;"/>
+  <circle cx="330" cy="768" r="12" style="fill: #009688; stroke: white; stroke-width: 2;"/>
+  <text x="330" y="773" text-anchor="middle" style="font-size: 9px; font-weight: bold; fill: white;">CLOUD</text>
+  
+  <!-- Feedback loop with numbered circle -->
+  <path d="M 180 670 Q 50 670, 50 400 Q 50 120, 1200 470" style="stroke: #009688; stroke-width: 3; fill: none; stroke-dasharray: 5,5; marker-end: url(#feedback-arrow);"/>
+  <circle cx="625" cy="295" r="15" style="fill: #009688; stroke: white; stroke-width: 2;"/>
+  <text x="625" y="301" text-anchor="middle" style="font-size: 14px; font-weight: bold; fill: white;">⑤</text>
+  
+  <text x="30" y="380" class="step-text" style="fill: #009688; font-weight: bold;">피드백</text>
+  <text x="30" y="395" class="step-text" style="fill: #009688; font-weight: bold;">루프</text>
+  
+  <!-- Hardware Performance and Connection Info -->
+  <rect x="400" y="1170" width="500" height="80" style="fill: #e3f2fd; stroke: #2196f3; stroke-width: 1; rx: 5;"/>
+  <text x="650" y="1185" text-anchor="middle" style="font-weight: bold; font-size: 12px; fill: #1565c0;">하드웨어 연결 최적화</text>
+  <text x="650" y="1200" text-anchor="middle" style="font-size: 10px; fill: #1565c0;">GPU→벡터DB 검색 가속, SSD→지식베이스 고속 액세스</text>
+  <text x="650" y="1215" text-anchor="middle" style="font-size: 10px; fill: #1565c0;">CPU→문서 전처리 최적화, Cloud→대규모 LLM 추론 처리</text>
+  <text x="650" y="1230" text-anchor="middle" style="font-size: 10px; fill: #1565c0;">메모리 계층 최적화: L1/L2 캐시 → RAM → VRAM → SSD</text>
+  <text x="650" y="1245" text-anchor="middle" style="font-size: 9px; fill: #0d47a1;">네트워크 대역폭: InfiniBand (400Gbps), 분산 처리: 멀티노드 클러스터</text>
+  
+  <!-- Performance Metrics Box - FINAL BOTTOM -->
+  <rect x="100" y="1280" width="1200" height="30" style="fill: #fff3cd; stroke: #ffc107; stroke-width: 2; rx: 8;"/>
+  <text x="700" y="1295" text-anchor="middle" style="font-size: 13px; font-weight: bold; fill: #856404;">📊 종합 성능 지표</text>
+  <text x="700" y="1310" text-anchor="middle" style="font-size: 11px; fill: #856404;">정확도 | 관련성 | 일관성 | 응답시간 | 비용 효율성 | Q&A 품질 | 정답/오답 구분 정확도 | GPU 사용률 | 처리량 | 메모리 효율성 | 확장성</text>
+  
+</svg>
