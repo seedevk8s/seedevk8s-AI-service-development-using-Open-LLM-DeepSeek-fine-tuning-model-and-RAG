@@ -1,0 +1,52 @@
+flowchart TD
+    subgraph "1단계: 문제 정의"
+        A1[🎯 목표: 인간처럼<br/>여러 문서를 읽고 추론]
+        A2[❓ 과제: 어떻게 학습시킬까?]
+    end
+    
+    subgraph "2단계: 데이터 수집의 딜레마"
+        B1[😰 문제: 복합 QA 데이터<br/>만들기 너무 어려움]
+        B2[💰 비용: 전문가가 직접<br/>만들면 시간과 돈 많이 듦]
+        B3[📏 규모: 대량 데이터<br/>필요하지만 현실적 한계]
+    end
+    
+    subgraph "3단계: 혁신적 해결책"
+        C1[💡 아이디어: GPT로<br/>GPT 학습 데이터 만들기]
+        C2[🔄 자동화: 사람 개입<br/>최소화하면서 고품질]
+        C3[⚡ 효율성: 200개 데이터를<br/>몇 시간만에 생성]
+    end
+    
+    subgraph "4단계: 현재 프로젝트"
+        D1[🛠️ 구현: KLUE + GPT<br/>파이프라인 구축]
+        D2[✅ 검증: 품질 자동 관리<br/>시스템 내장]
+        D3[📈 확장: 쉽게 스케일업<br/>가능한 구조]
+    end
+    
+    subgraph "5단계: 미래 발전"
+        E1[🔬 모델 학습: 생성된<br/>데이터로 AI 훈련]
+        E2[🧪 성능 평가: 실제<br/>복합 추론 능력 측정]
+        E3[🚀 실용화: 상용 서비스<br/>적용 가능한 수준]
+    end
+    
+    A1 --> A2
+    A2 --> B1
+    B1 --> B2
+    B2 --> B3
+    B3 --> C1
+    C1 --> C2
+    C2 --> C3
+    C3 --> D1
+    D1 --> D2
+    D2 --> D3
+    D3 --> E1
+    E1 --> E2
+    E2 --> E3
+    
+    style A1 fill:#e8eaf6
+    style B1 fill:#ffcdd2
+    style C1 fill:#fff3e0
+    style D1 fill:#e1f5fe
+    style E1 fill:#c8e6c9
+    
+    classDef current fill:#f3e5f5,stroke:#9c27b0,stroke-width:3px
+    class D1,D2,D3 current
