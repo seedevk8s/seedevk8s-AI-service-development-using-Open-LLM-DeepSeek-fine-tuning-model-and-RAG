@@ -1,0 +1,13 @@
+flowchart LR
+    A[원본 데이터<br/>context<br/>question<br/>negative_samples] --> B[문서 리스트<br/>docs: 5개 문서<br/>랜덤 순서]
+    
+    B --> C[복합 질문<br/>composite_question<br/>Question + Reason + Answer]
+    
+    C --> D[필터링 후<br/>Answer: True만<br/>question_only 추출]
+    
+    D --> E[프롬프트<br/>user_prompt<br/>system_prompt]
+    
+    E --> F[최종 답변<br/>responses<br/>인용 출처 포함]
+    
+    style A fill:#e3f2fd
+    style F fill:#c8e6c9
