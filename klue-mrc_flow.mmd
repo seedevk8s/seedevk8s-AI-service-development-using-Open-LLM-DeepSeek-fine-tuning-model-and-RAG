@@ -1,0 +1,8 @@
+
+flowchart TD
+    A[시작: JSON 파일 로드] --> B[데이터 구조 파싱]
+    B --> C[Context 및 Question 추출]
+    C --> D[DataFrame 생성]
+    D --> E[Context 중복 제거]
+    E --> F[Question 중복 제거]
+    F --> G[정제된 데이터 반환]
