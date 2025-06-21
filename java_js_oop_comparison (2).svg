@@ -1,0 +1,99 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <rect x="50" y="20" width="1100" height="50" fill="#2c3e50" rx="8"/>
+  <text x="600" y="50" text-anchor="middle" fill="white" font-size="22" font-weight="bold">
+    Java vs JavaScript 객체 체계 비교
+  </text>
+  
+  <!-- Divider -->
+  <line x1="600" y1="90" x2="600" y2="750" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="600" y="110" text-anchor="middle" fill="#6c757d" font-size="14" font-weight="bold">VS</text>
+  
+  <!-- Java Side Header -->
+  <rect x="70" y="90" width="480" height="40" fill="#e74c3c" rx="5"/>
+  <text x="310" y="115" text-anchor="middle" fill="white" font-size="18" font-weight="bold">
+    ☕ JAVA (클래스 기반)
+  </text>
+  
+  <!-- JavaScript Side Header -->
+  <rect x="650" y="90" width="480" height="40" fill="#f39c12" rx="5"/>
+  <text x="890" y="115" text-anchor="middle" fill="white" font-size="18" font-weight="bold">
+    🚀 JAVASCRIPT (프로토타입 기반)
+  </text>
+  
+  <!-- 1. Built-in Objects -->
+  <rect x="70" y="150" width="480" height="120" fill="#ffebee" stroke="#e74c3c" stroke-width="2" rx="5"/>
+  <text x="80" y="170" fill="#c62828" font-size="14" font-weight="bold">1️⃣ 내장 클래스</text>
+  <text x="80" y="190" fill="#2c3e50" font-size="12">• String, Integer, ArrayList, HashMap</text>
+  <text x="80" y="205" fill="#2c3e50" font-size="12">• Date, Math, Collections</text>
+  <text x="80" y="220" fill="#2c3e50" font-size="12">• 컴파일 타임에 클래스패스 포함</text>
+  <text x="80" y="240" fill="#c62828" font-size="11" font-family="monospace">String str = new String("Hello");</text>
+  <text x="80" y="255" fill="#c62828" font-size="11" font-family="monospace">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();</text>
+  
+  <rect x="650" y="150" width="480" height="120" fill="#fff8e1" stroke="#f39c12" stroke-width="2" rx="5"/>
+  <text x="660" y="170" fill="#e65100" font-size="14" font-weight="bold">1️⃣ 내장 객체</text>
+  <text x="660" y="190" fill="#2c3e50" font-size="12">• String, Number, Array, Object</text>
+  <text x="660" y="205" fill="#2c3e50" font-size="12">• Date, Math, JSON, Promise</text>
+  <text x="660" y="220" fill="#2c3e50" font-size="12">• 런타임에 전역 객체로 제공</text>
+  <text x="660" y="240" fill="#e65100" font-size="11" font-family="monospace">const str = new String("Hello");</text>
+  <text x="660" y="255" fill="#e65100" font-size="11" font-family="monospace">const arr = new Array(1, 2, 3);</text>
+  
+  <!-- 2. Environment Objects -->
+  <rect x="70" y="290" width="480" height="120" fill="#e8f5e8" stroke="#4caf50" stroke-width="2" rx="5"/>
+  <text x="80" y="310" fill="#2e7d32" font-size="14" font-weight="bold">2️⃣ 프레임워크/API</text>
+  <text x="80" y="330" fill="#2c3e50" font-size="12">• Spring Framework (@Component, @Service)</text>
+  <text x="80" y="345" fill="#2c3e50" font-size="12">• Java SE API (java.util.*, java.io.*)</text>
+  <text x="80" y="360" fill="#2c3e50" font-size="12">• 서버 환경 중심</text>
+  <text x="80" y="380" fill="#2e7d32" font-size="11" font-family="monospace">@Service</text>
+  <text x="80" y="395" fill="#2e7d32" font-size="11" font-family="monospace">public class UserService { ... }</text>
+  
+  <rect x="650" y="290" width="480" height="120" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="5"/>
+  <text x="660" y="310" fill="#1565c0" font-size="14" font-weight="bold">2️⃣ DOM/BOM 객체</text>
+  <text x="660" y="330" fill="#2c3e50" font-size="12">• DOM: document, element, event</text>
+  <text x="660" y="345" fill="#2c3e50" font-size="12">• BOM: window, navigator, location</text>
+  <text x="660" y="360" fill="#2c3e50" font-size="12">• 브라우저 환경 중심</text>
+  <text x="660" y="380" fill="#1565c0" font-size="11" font-family="monospace">document.getElementById('app');</text>
+  <text x="660" y="395" fill="#1565c0" font-size="11" font-family="monospace">window.location.href = 'https://...';</text>
+  
+  <!-- 3. External Libraries -->
+  <rect x="70" y="430" width="480" height="120" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="5"/>
+  <text x="80" y="450" fill="#7b1fa2" font-size="14" font-weight="bold">3️⃣ 외부 라이브러리</text>
+  <text x="80" y="470" fill="#2c3e50" font-size="12">• Maven/Gradle로 의존성 관리</text>
+  <text x="80" y="485" fill="#2c3e50" font-size="12">• JAR 파일로 패키징</text>
+  <text x="80" y="500" fill="#2c3e50" font-size="12">• 예: Apache Commons, Jackson, JUnit</text>
+  <text x="80" y="520" fill="#7b1fa2" font-size="11" font-family="monospace">&lt;dependency&gt;</text>
+  <text x="80" y="535" fill="#7b1fa2" font-size="11" font-family="monospace">  &lt;groupId&gt;com.fasterxml.jackson&lt;/groupId&gt;</text>
+  
+  <rect x="650" y="430" width="480" height="120" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="5"/>
+  <text x="660" y="450" fill="#c2185b" font-size="14" font-weight="bold">3️⃣ 외부 라이브러리</text>
+  <text x="660" y="470" fill="#2c3e50" font-size="12">• NPM/Yarn으로 패키지 관리</text>
+  <text x="660" y="485" fill="#2c3e50" font-size="12">• ES6 모듈 또는 CommonJS</text>
+  <text x="660" y="500" fill="#2c3e50" font-size="12">• 예: React, Vue, lodash, axios</text>
+  <text x="660" y="520" fill="#c2185b" font-size="11" font-family="monospace">import React from 'react';</text>
+  <text x="660" y="535" fill="#c2185b" font-size="11" font-family="monospace">import _ from 'lodash';</text>
+  
+  <!-- 4. User-defined -->
+  <rect x="70" y="570" width="480" height="100" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+  <text x="80" y="590" fill="#f57c00" font-size="14" font-weight="bold">4️⃣ 사용자 정의 클래스</text>
+  <text x="80" y="610" fill="#2c3e50" font-size="12">• 상속: extends, implements</text>
+  <text x="80" y="625" fill="#2c3e50" font-size="12">• 패키지로 구조화</text>
+  <text x="80" y="645" fill="#f57c00" font-size="11" font-family="monospace">public class User extends Person {</text>
+  <text x="80" y="660" fill="#f57c00" font-size="11" font-family="monospace">  private String name;</text>
+  
+  <rect x="650" y="570" width="480" height="100" fill="#f1f8e9" stroke="#8bc34a" stroke-width="2" rx="5"/>
+  <text x="660" y="590" fill="#689f38" font-size="14" font-weight="bold">4️⃣ 사용자 정의 객체</text>
+  <text x="660" y="610" fill="#2c3e50" font-size="12">• 객체 리터럴, 클래스, 생성자 함수</text>
+  <text x="660" y="625" fill="#2c3e50" font-size="12">• 프로토타입 기반 상속</text>
+  <text x="660" y="645" fill="#689f38" font-size="11" font-family="monospace">class User extends Person {</text>
+  <text x="660" y="660" fill="#689f38" font-size="11" font-family="monospace">  constructor(name) { super(name); }</text>
+  
+  <!-- Key Differences -->
+  <rect x="50" y="690" width="1100" height="80" fill="#34495e" rx="8"/>
+  <text x="100" y="710" fill="white" font-size="14" font-weight="bold">🔍 핵심 차이점:</text>
+  <text x="100" y="730" fill="#ecf0f1" font-size="12">• Java: 컴파일 타임 검증, 강타입, 클래스 기반 상속, JVM 환경</text>
+  <text x="100" y="745" fill="#ecf0f1" font-size="12">• JavaScript: 런타임 검증, 동적타입, 프로토타입 기반 상속, 브라우저/Node.js 환경</text>
+  <text x="100" y="760" fill="#f39c12" font-size="12" font-weight="bold">면접 포인트: DOM/BOM은 JS만의 특징, Java는 패키지 구조, JS는 모듈 시스템!</text>
+</svg>
