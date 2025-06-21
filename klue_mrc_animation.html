@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>KLUE-MRC Workflow Animation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 40px;
+      width: 600px;
+      text-align: center;
+    }
+    .step {
+      font-size: 20px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    .step.active {
+      opacity: 1;
+    }
+    button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="step active">1단계: KLUE-MRC JSON 데이터 로드</div>
+    <div class="step">2단계: context와 question 추출</div>
+    <div class="step">3단계: 중복 제거 및 정제</div>
+    <div class="step">4단계: 상위 500개 샘플 선택</div>
+    <div class="step">5단계: 프롬프트 생성</div>
+    <div class="step">6단계: OpenAI API를 통한 답변 생성</div>
+    <button onclick="nextStep()">다음 단계 보기</button>
+  </div>
+
+  <script>
+    let current = 0;
+    const steps = document.querySelectorAll('.step');
+
+    function nextStep() {
+      if (current < steps.length - 1) {
+        steps[current].classList.remove('active');
+        current++;
+        steps[current].classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>
