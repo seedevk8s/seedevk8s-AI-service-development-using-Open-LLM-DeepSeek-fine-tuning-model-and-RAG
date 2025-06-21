@@ -1,0 +1,25 @@
+graph TD
+    subgraph "1단계: 데이터 준비"
+        A1[입력: CSV 파일] --> A2[출력: 200개 샘플 + 5개 문서]
+    end
+    
+    subgraph "2단계: 복합 질문 생성"
+        B1[입력: 5개 문서] --> B2[GPT 호출] --> B3[출력: 복합 질문 + 평가]
+    end
+    
+    subgraph "3단계: 품질 관리"
+        C1[입력: 복합 질문들] --> C2[필터링] --> C3[출력: 검증된 질문들]
+    end
+    
+    subgraph "4단계: 답변 생성"
+        D1[입력: 질문 + 문서] --> D2[GPT 호출] --> D3[출력: 인용 답변]
+    end
+    
+    A2 --> B1
+    B3 --> C1
+    C3 --> D1
+    
+    style A2 fill:#e8f5e8
+    style B3 fill:#fff3e0
+    style C3 fill:#fce4ec
+    style D3 fill:#c8e6c9
