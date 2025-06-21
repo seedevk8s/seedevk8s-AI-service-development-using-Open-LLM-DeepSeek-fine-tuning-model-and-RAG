@@ -1,0 +1,71 @@
+graph TD
+    subgraph "🏛️ 학술 연구 기반"
+        A1[KLUE 벤치마크<br/>2021년 출시]
+        A2[KAIST, NYU<br/>학술 연구]
+        A3[논문 발표<br/>국제 학회]
+    end
+    
+    subgraph "🏭 산업계 활용"
+        B1[네이버 CLOVA<br/>검색/Q&A 서비스]
+        B2[카카오브레인<br/>대화형 AI]
+        B3[업스테이지<br/>문서 AI 솔루션]
+        B4[하이퍼클로바X<br/>초거대 언어 모델]
+    end
+    
+    subgraph "🎯 현재 프로젝트"
+        C1[📊 KLUE-MRC 확장<br/>Multi-Document QA]
+        C2[🤖 GPT 기반<br/>자동 데이터 생성]
+        C3[🔗 Source Attribution<br/>신뢰할 수 있는 AI]
+    end
+    
+    subgraph "📈 직접적 효과"
+        D1[🔬 연구 활성화<br/>새로운 연구 방향 제시]
+        D2[📚 데이터셋 공개<br/>연구 커뮤니티 기여]
+        D3[💡 방법론 확산<br/>다른 언어로 확장]
+    end
+    
+    subgraph "🌊 파급 효과"
+        E1[🏥 의료 AI<br/>진단서 종합 분석]
+        E2[⚖️ 법률 AI<br/>판례 분석 시스템]
+        E3[📰 미디어 AI<br/>뉴스 종합 요약]
+        E4[🎓 교육 AI<br/>학습 자료 분석]
+        E5[💼 기업 AI<br/>보고서 통합 분석]
+    end
+    
+    subgraph "🌍 글로벌 영향"
+        F1[🇰🇷 한국어 AI<br/>글로벌 경쟁력]
+        F2[🤝 국제 협력<br/>다국어 AI 연구]
+        F3[🏆 기술 리더십<br/>AI 선도국 지위]
+    end
+    
+    A1 --> C1
+    A2 --> C2
+    B1 --> C1
+    B2 --> C2
+    B3 --> C3
+    B4 --> C1
+    
+    C1 --> D1
+    C2 --> D2
+    C3 --> D3
+    
+    D1 --> E1
+    D1 --> E2
+    D2 --> E3
+    D2 --> E4
+    D3 --> E5
+    
+    E1 --> F1
+    E2 --> F1
+    E3 --> F2
+    E4 --> F2
+    E5 --> F3
+    
+    style C1 fill:#e1f5fe
+    style C2 fill:#f3e5f5
+    style D1 fill:#fff3e0
+    style E1 fill:#e8f5e8
+    style F1 fill:#c8e6c9
+    
+    classDef project fill:#f3e5f5,stroke:#9c27b0,stroke-width:3px
+    class C1,C2,C3 project
