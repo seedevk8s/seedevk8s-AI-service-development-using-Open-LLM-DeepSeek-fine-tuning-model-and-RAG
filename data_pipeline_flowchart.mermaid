@@ -1,0 +1,24 @@
+flowchart TD
+    A[KLUE MRC CSV 파일] --> B[3000~3199번째 행 추출<br/>200개 샘플]
+    
+    B --> C[문서 리스트 생성]
+    C --> D[원본 context 1개 +<br/>negative samples 4개<br/>= 총 5개 문서]
+    D --> E[문서 순서 랜덤 셔플]
+    
+    E --> F[첫 번째 GPT 호출<br/>복합 질문 생성]
+    F --> G[GPT 응답:<br/>Question + Reason + Answer]
+    
+    G --> H{Answer가 True인가?}
+    H -->|No| I[해당 행 제거]
+    H -->|Yes| J[Question 부분만 추출]
+    
+    J --> K[두 번째 GPT 호출<br/>답변 생성]
+    K --> L[문서 인용 포함 답변<br/>doc1, doc2 형식]
+    
+    L --> M[최종 결과물<br/>복합 QA 데이터셋]
+    
+    style A fill:#e1f5fe
+    style M fill:#c8e6c9
+    style F fill:#fff3e0
+    style K fill:#fff3e0
+    style H fill:#fce4ec
